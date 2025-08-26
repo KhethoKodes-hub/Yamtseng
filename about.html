@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Yamtseng SA (PTY) LTD</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/Yamtsenglogo.png">
+
+    <style>
+        :root {
+            --primary-color: #2c5aa0;
+            --secondary-color: #f39c12;
+            --accent-color: #27ae60;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+        }
+
+        /* Custom animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: var(--secondary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .about-hero {
+            background: linear-gradient(135deg, rgba(44, 90, 160, 0.9), rgba(44, 62, 80, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><rect fill="%23e8f4f8" width="1000" height="600"/><circle fill="%23d4e9f2" cx="200" cy="150" r="80"/><circle fill="%23c0dded" cx="800" cy="450" r="120"/><circle fill="%23abd1e8" cx="500" cy="300" r="100"/></svg>');
+            background-size: cover;
+            background-position: center;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(243, 156, 18, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .story-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .story-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+
+        .story-card:hover::before {
+            opacity: 0.95;
+        }
+
+        .story-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .story-card:hover * {
+            color: white !important;
+            z-index: 2;
+            position: relative;
+        }
+
+        .story-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .story-card:hover .story-icon {
+            color: white;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 50px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(var(--primary-color), var(--secondary-color));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 50px 0;
+        }
+
+        .timeline-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            width: 45%;
+            transition: all 0.4s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            height: 100%;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+
+        .value-card:hover::before {
+            opacity: 0.95;
+        }
+
+        .value-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .value-card:hover * {
+            color: white !important;
+            z-index: 2;
+            position: relative;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover .value-icon {
+            color: white;
+        }
+
+        /* Leadership Section */
+        .leadership-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: white;
+        }
+
+        .leader-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .leader-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-color), #e67e22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 3rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .leader-card:hover .leader-avatar {
+            transform: scale(1.1);
+        }
+
+        /* Mission Vision Section */
+        .mission-vision {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .mission-card, .vision-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            text-align: center;
+        }
+
+        .mission-card::before, .vision-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+
+        .mission-card:hover::before, .vision-card:hover::before {
+            opacity: 0.95;
+        }
+
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .mission-card:hover *, .vision-card:hover * {
+            color: white !important;
+            z-index: 2;
+            position: relative;
+        }
+
+        .section-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .mission-card:hover .section-icon, .vision-card:hover .section-icon {
+            color: white;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background: var(--light-color);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover .stat-number {
+            color: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+            }
+            
+            .timeline-date {
+                left: 30px;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animated {
+            opacity: 1 !important;
+            transform: translate(0) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+  <img src="assets/Yamtsenglogo.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="hero-content text-white">
+                        <h1 class="display-4 mb-4">Our <span class="text-warning">Story</span></h1>
+                        <p class="lead">From humble beginnings in Postmasburg to becoming a beacon of hope and progress, discover the journey that defines Yamtseng SA (PTY) LTD.</p>
+                        <div class="mt-4">
+                            <a href="#story" class="btn btn-warning btn-lg me-3">
+                                <i class="fas fa-book-open"></i> Read Our Journey
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="text-center">
+                        <div class="bg-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 200px; height: 200px; animation: pulse 3s infinite;">
+                            <i class="fas fa-users text-white" style="font-size: 5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story" class="story-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 animate-on-scroll">The <span class="text-primary">Yamtseng</span> Story</h2>
+                <p class="lead animate-on-scroll">A tale of vision, determination, and community transformation</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="story-card animate-on-scroll">
+                        <div class="story-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3 class="text-primary mb-3">The Beginning</h3>
+                        <p>In 2020, amidst global uncertainty, <strong>Moremi Wilfred Kgoro</strong> saw opportunity where others saw challenge. As a local entrepreneur from Postmasburg, he recognized the untapped potential within his community and founded Yamtseng SA (PTY) LTD with a clear mission: to uplift and empower through meaningful work and sustainable solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="story-card animate-on-scroll">
+                        <div class="story-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="text-primary mb-3">The Foundation</h3>
+                        <p>With roots in construction and civil works dating back to 2016, our founder brought years of industry experience and deep community connections. This foundation became the bedrock upon which Yamtseng was built - not just as a business, but as a <em>community partner</em> committed to lasting change.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="story-card animate-on-scroll">
+                        <div class="story-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 class="text-primary mb-3">Community First</h3>
+                        <p>From day one, Yamtseng has operated on a simple yet powerful principle: <strong>community first</strong>. Every project, every service, every decision is made through the lens of how it can best serve and uplift the people of Postmasburg and the broader Northern Cape region.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="story-card animate-on-scroll">
+                        <div class="story-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-primary mb-3">Growth & Impact</h3>
+                        <p>Today, Yamtseng stands as a testament to what's possible when vision meets action. As a <strong>100% black-owned enterprise</strong>, we've expanded our services across 13+ core areas while maintaining our commitment to employment equity and community development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section py-5" style="background: white;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 animate-on-scroll">Our <span class="text-primary">Journey</span></h2>
+                <p class="lead animate-on-scroll">Key milestones that shaped our growth</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-date">2016</div>
+                    <div class="timeline-content">
+                        <h4>Foundation Years</h4>
+                        <p>Our founder begins journey in construction and civil works, building expertise and community relationships that would later become the foundation of Yamtseng SA.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-content">
+                        <h4>Yamtseng SA Born</h4>
+                        <p>Official establishment of Yamtseng SA (PTY) LTD (Reg: 2020/626106) with a clear mission to alleviate unemployment, hunger, and poverty through community-focused services.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-date">2021</div>
+                    <div class="timeline-content">
+                        <h4>Service Expansion</h4>
+                        <p>Diversification into multiple service areas including catering, cleaning, procurement, and IT services to better serve community needs and create more employment opportunities.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-date">Today</div>
+                    <div class="timeline-content">
+                        <h4>Community Leader</h4>
+                        <p>Established as a trusted partner across 13+ service areas, committed to 60% women employment and 2% disabled employment in permanent personnel, driving meaningful change in the Northern Cape.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mission-vision">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="mission-card animate-on-scroll">
+                        <div class="section-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="mb-4">Our Mission</h3>
+                        <p class="lead mb-4">"Creating lasting partnerships through exceptional service"</p>
+                        <p>Yamtseng SA (PTY) LTD is striving to be a leader in providing value-added services to our customers by creating successful partnerships through meaningful business relationships.</p>
+                        <p>Our pledge is to establish lasting relationships with our customers by exceeding their expectations and gaining their trust through the exceptional services we offer.</p>
+                        <div class="mt-4">
+                            <div class="bg-primary text-white rounded-pill px-3 py-1 d-inline-block">
+                                <i class="fas fa-handshake me-2"></i>
+                                <strong>Partnership Driven</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="vision-card animate-on-scroll">
+                        <div class="section-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="mb-4">Our Vision</h3>
+                        <p class="lead mb-4">"Transforming communities, one project at a time"</p>
+                        <p>Our aim is to alleviate unemployment, hunger, and poverty through our work. We want to create employment opportunities that will eradicate crime by providing short-term and long-term jobs through various projects for local communities.</p>
+                        <p>We will contribute to the economic growth of local municipalities, district municipalities, and the province through our impactful projects.</p>
+                        <div class="mt-4">
+                            <div class="bg-primary text-white rounded-pill px-3 py-1 d-inline-block">
+                                <i class="fas fa-users me-2"></i>
+                                <strong>Community Focused</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 animate-on-scroll">Our Core <span class="text-primary">Values</span></h2>
+                <p class="lead animate-on-scroll">The principles that guide everything we do</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="value-card animate-on-scroll">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4 class="mb-3">Respect</h4>
+                        <p>Yamtseng SA is an inclusive organisation where people of all creeds are welcomed and respected on their merits. We celebrate diversity and believe it makes us stronger.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="value-card animate-on-scroll">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="mb-3">Responsibility</h4>
+                        <p>We strive to act with integrity towards our staff, customers, the community, and the environment. Every action we take considers its impact on all stakeholders.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="value-card animate-on-scroll">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4 class="mb-3">Caring</h4>
+                        <p>We maintain a genuine duty of care for our staff, customers, and the environment. This caring approach is reflected in everything from safety protocols to customer service.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="value-card animate-on-scroll">
+                        <div class="value-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="mb-3">Excellence</h4>
+                        <p>We seek to provide the best quality experience with regards to our services and customer relationships. Excellence is not a destination but a continuous journey.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="value-card animate-on-scroll">
+                        <div class="value-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h4 class="mb-3">Integrity</h4>
+                        <p>We maintain the highest standards of accountability, honesty, and openness in all we do. Our word is our bond, and we stand by our commitments without compromise.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="leadership-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 animate-on-scroll">Our <span class="text-warning">Leadership</span></h2>
+                <p class="lead animate-on-scroll">The visionary behind Yamtseng SA's success</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="leader-card animate-on-scroll">
+                        <div class="leader-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="mb-3">Moremi Wilfred Kgoro</h3>
+                        <h5 class="text-warning mb-4">Founder & Director</h5>
+                        <p>A visionary entrepreneur with deep roots in the Postmasburg community, Moremi founded Yamtseng SA in 2020 with a mission to create meaningful employment opportunities and drive sustainable community development.</p>
+                        <p>With extensive experience in construction and civil works dating back to 2016, he brings both technical expertise and heartfelt commitment to every project.</p>
+                        <div class="mt-4">
+                            <a href="#contact" class="btn btn-warning">
+                                <i class="fas fa-envelope me-2"></i> Get In Touch
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item animate-on-scroll">
+                        <span class="stat-number">2020</span>
+                        <p>Established</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item animate-on-scroll">
+                        <span class="stat-number">100%</span>
+                        <p>Black Owned</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item animate-on-scroll">
+                        <span class="stat-number">13+</span>
+                        <p>Core Services</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item animate-on-scroll">
+                        <span class="stat-number">60%</span>
+                        <p>Women Employment Goal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p>&copy; 2024 Yamtseng SA (PTY) LTD. All rights reserved. | Reg: 2020/626106</p>
+                    <p class="text-muted">Building Communities, Creating Futures - One Project at a Time</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll, .animate-left, .animate-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'linear-gradient(135deg, rgba(44, 90, 160, 0.95), rgba(44, 62, 80, 0.95))';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.background = 'linear-gradient(135deg, var(--primary-color), var(--dark-color))';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+
+        // Add some interactive sparkle effects
+        document.addEventListener('mousemove', (e) => {
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'fixed';
+            sparkle.style.width = '4px';
+            sparkle.style.height = '4px';
+            sparkle.style.background = '#f39c12';
+            sparkle.style.borderRadius = '50%';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '9999';
+            sparkle.style.left = e.clientX + 'px';
+            sparkle.style.top = e.clientY + 'px';
+            sparkle.style.opacity = '0.7';
+            sparkle.style.animation = 'sparkle 1s ease-out forwards';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        });
+
+        // Add sparkle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkle {
+                0% {
+                    transform: scale(0) rotate(0deg);
+                    opacity: 0.7;
+                }
+                50% {
+                    transform: scale(1) rotate(180deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(0) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
